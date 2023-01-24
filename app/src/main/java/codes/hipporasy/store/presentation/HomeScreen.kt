@@ -9,7 +9,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Destination
 @Composable
 fun HomeScreen(
-    navigator: DestinationsNavigator
+    // navigator: DestinationsNavigator
 ) {
     /*...*/
 //    navigator.navigate(ProfileScreenDestination(id = 7, groupName = "Kotlin programmers"))
