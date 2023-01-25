@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import codes.hipporasy.store.presentation.destinations.PostScreenDestination
 import codes.hipporasy.store.presentation.destinations.ProfileScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
@@ -20,9 +21,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun HomeScreen(
     navigator: DestinationsNavigator
 ) {
-    /*...*/
-//    navigator.navigate(ProfileScreenDestination(id = 7, groupName = "Kotlin programmers"))
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -32,10 +30,7 @@ fun HomeScreen(
 
         Button(onClick = {
             navigator.navigate(
-                ProfileScreenDestination(
-                    id = 7,
-                    groupName = "Kotlin programmers"
-                )
+                PostScreenDestination()
             )
         }) {
             Text("Open Profile")
