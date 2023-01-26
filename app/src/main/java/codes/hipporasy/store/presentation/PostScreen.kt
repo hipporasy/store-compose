@@ -2,6 +2,8 @@ package codes.hipporasy.store.presentation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -9,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.style.TextAlign
@@ -35,7 +38,15 @@ fun PostScreen(
     PostDetailBody({ navigator.navigateUp() }) {
         when (state) {
             is BaseViewState.Data<*> -> PostList(state = state.cast<BaseViewState.Data<PostState>>().value)
-            is BaseViewState.Loading -> Text(text = "Loading")
+            is BaseViewState.Loading ->
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    CircularProgressIndicator()
+                }
+
             else -> Text("Nothing")
         }
 
@@ -80,7 +91,7 @@ private fun PostDetailBody(
 
 @Composable
 fun PostList(state: PostState) {
-    Column() {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         for (post in state.posts ?: listOf()) {
             PostCard(post)
         }
@@ -89,8 +100,11 @@ fun PostList(state: PostState) {
 
 @Composable
 fun PostCard(post: Post) {
-    Card(elevation = 4.dp) {
-        Column(modifier = Modifier.padding(16.dp)) {
+    Card(
+        elevation = 4.dp,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+    ) {
+        Column(modifier = Modifier.padding(8.dp)) {
             Text(text = post.title)
             Text(text = post.body)
         }
