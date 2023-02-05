@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import codes.hipporasy.store.R
+import codes.hipporasy.store.presentation.destinations.LoginScreenDestination
 import codes.hipporasy.store.ui.theme.LightGray
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
@@ -40,6 +41,8 @@ fun OnBoardingScreen(
     var selectedIndex by remember { mutableStateOf(0) }
     val pagerState = rememberPagerState()
     val items = OnBoardingType.values()
+
+    navigator.navigate(LoginScreenDestination())
 
     LaunchedEffect(pagerState) {
         // Collect from the a snapshotFlow reading the currentPage
