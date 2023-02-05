@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,7 +78,13 @@ fun OnBoardingScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Skip", style = MaterialTheme.typography.button)
+            TextButton(onClick = { /*TODO*/ }) {
+                Text(
+                    text = "Skip",
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.onSurface
+                )
+            }
             Button(onClick = { /*TODO*/ }, shape = CircleShape) {
                 Text("Get Started")
             }
